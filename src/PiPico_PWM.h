@@ -1,18 +1,22 @@
 /*
-  PWM servo control, max 16 servos, for RP2040 and RP23050
-  Resolution 200 ns with 10 ms (100 Hz) frame rate.
+  PWM servo control, max 16 servos, for RP2040 and RP23050.
+  Resolution 310 ns with 20 ms (50 Hz) frame rate.
+  Resolution 50 ns with 3.33 ms (300 Hz) frame rate.
+
   Please refer to the RP240 and RP2350 PWM slice table for pin assignments.
-  Frame rate any value between 25 and 200 Hz.
+  Frame rate any value between 50 and 300 Hz.
 
   Max resolution servo pulse:
-  25  Hz  0.5 us
-  50  Hz  0.4 us
-  100 Hz  0.3 us
-  150 Hz  0.1 us
-  200 Hz  0.1 us
+  50  Hz  0.31 us
+  100 Hz  0.15 us
+  150 Hz  0.10 us
+  200 Hz  0.08 us
+  300 Hz  0.05 us
+
+  v 1.0.0 build 26/08/2026
 
   Warning:
-  Uses pico-sdk features, use only with Earle philhower core-
+  Uses pico-sdk features, use only with Earle philhower core.
 
   (c) 2026 by Xwing
   Private and educational use permitted.
@@ -50,8 +54,8 @@ class PWM {
 public:
   PWM(){};
   bool begin(int pin, int freq, float min_us, float max_us) {
-    if (freq > 200) freq = 200;
-    if (freq < 25) freq = 25;
+    if (freq > 300) freq = 300;
+    if (freq < 50) freq = 50;
     this->pin = pin;
     this->req_freq = freq;
     this->min_us = min_us;
