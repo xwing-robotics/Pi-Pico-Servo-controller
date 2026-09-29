@@ -51,6 +51,6 @@ SOFTWARE.
 #include <hardware/pwm.h>
 
 
-// WIP, doming soon
+// WIP, coming soon
 
 
